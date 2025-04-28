@@ -1,0 +1,66 @@
+ms-auth
+├── .idea
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── codigo
+│   │   │           └── auth
+│   │   │               ├── application
+│   │   │               │   ├── port
+│   │   │               │   │   ├── input
+│   │   │               │   │   │   └── AuthUseCase.java
+│   │   │               │   │   └── output
+│   │   │               │   │       └── UserRepositoryPort.java
+│   │   │               │   └── service
+│   │   │               │       └── AuthService.java
+│   │   │               │       └── AuthServiceImpl.java
+│   │   │               │       └── MyUserDetailsService.java
+│   │   │               ├── domain
+│   │   │               │   └── model
+│   │   │               │       └── Usuario.java
+│   │   │               ├── infrastructure
+│   │   │               │   ├── adapter
+│   │   │               │   │   └── UserRepositoryAdapter.java
+│   │   │               │   └── config
+│   │   │               │   │   ├── JwtProvider.java
+│   │   │               │   │   └── SecurityConfig.java
+│   │   │               │   │   └── JwtAuthenticationFilter.java
+│   │   │               │   ├── controller
+│   │   │               │   │   └── AuthController.java
+│   │   │               │   │   └── TestRolerController.java
+│   │   │               │   ├── entity
+│   │   │               │   │   └── UsuarioEntity.java
+│   │   │               │   ├── mapper
+│   │   │               │   │   └── UserMapper.java
+│   │   │               │   ├── repository
+│   │   │               │   │   └── UserRepository.java
+│   │   │               │   │   └── UserRepositoryJpa.java
+│   │   │               │   │   └── UserRepositoryImpl.java
+│   │   │               └── MsAuthApplication.java
+│   │   └── resources
+│   │       ├── application.properties
+│   │       ├── application.yml
+│   │       └── other-config-files.yml
+│   src
+│   └── test
+│       └── java
+│           └── com
+│               └── codigo
+│                   └── auth
+│                       ├── application
+│                       │   └── service
+│                       │       ├── AuthServiceImplTest.java
+│                       │       ├── MyUserDetailsServiceTest.java
+│                       │       ├── UserServiceTest.java
+│                       ├── infrastructure
+│                       │   ├── controller
+│                       │   │   ├── AuthControllerTest.java
+│                       │   │   └── TestRolerControllerTest.java
+│                       │   ├── config
+│                       │   │   └── JwtProviderTest.java
+│                       │   ├── adapter
+│                       │   │   └── UserRepositoryAdapterTest.java
+│   
+└── Dokerfile
+└── pom.xml
