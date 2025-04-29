@@ -5,4 +5,5 @@ import com.codigo.auth.domain.model.Usuario;
 public interface UserRepositoryPort {
     Usuario save(Usuario usuario);
     Usuario findByEmail(String email);
+    boolean existsByEmail(String email);
 }

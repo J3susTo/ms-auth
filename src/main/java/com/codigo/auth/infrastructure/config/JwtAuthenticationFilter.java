@@ -5,6 +5,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.OncePerRequestFilter;
 import jakarta.servlet.FilterChain;
@@ -30,25 +31,32 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
         String token = getJwtFromRequest(request);
         if (token != null) {
-            Usuario user = jwtProvider.validateToken(token); // Obtener el usuario desde el token
-            if (user != null) {
-                String username = jwtProvider.getUsernameFromToken(token);
-                // Aquí creamos el objeto de autenticación con los detalles
-                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
-                        username, null, new ArrayList<>()
-                );
-                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request)); // Establece los detalles de la autenticación
-                SecurityContextHolder.getContext().setAuthentication(authentication); // Configura la autenticación en el contexto
+            try {
+                Usuario user = jwtProvider.validateToken(token); // Obtener el usuario desde el token
+                if (user != null) {
+                    String username = jwtProvider.getUsernameFromToken(token);
+
+                    // Crear la autenticación usando el objeto Usuario completo
+                    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                            user, null, new ArrayList<>()
+                    );
+                    authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request)); // Establece los detalles de la autenticación
+
+                    // Establecer la autenticación en el contexto de seguridad
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                }
+            } catch (Exception e) {
+                // Manejo de errores si el token no es válido o hay un problema
+                logger.error("Error al validar el token JWT", e);
             }
         }
         filterChain.doFilter(request, response);
     }
 
-
     private String getJwtFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
         if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
-            return bearerToken.substring(7);
+            return bearerToken.substring(7); // Extrae el token de la cabecera Authorization
         }
         return null;
     }

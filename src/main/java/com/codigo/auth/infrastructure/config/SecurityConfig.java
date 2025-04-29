@@ -34,7 +34,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())  // Deshabilitar CSRF
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/auth/**").permitAll()  // Rutas públicas
+                                .requestMatchers("/auth/**").permitAll()
                                 .requestMatchers("/test/superadmin").hasRole("SUPERADMIN")  // Sólo SUPERADMIN
                                 .requestMatchers("/test/admin").hasRole("ADMIN")  // Sólo ADMIN
                                 .requestMatchers("/test/user").hasRole("USUARIO")  // Sólo USUARIO

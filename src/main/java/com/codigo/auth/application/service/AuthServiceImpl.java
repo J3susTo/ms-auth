@@ -6,7 +6,6 @@ import com.codigo.auth.domain.model.Usuario;
 import com.codigo.auth.infrastructure.config.JwtProvider;
 import org.springframework.stereotype.Service;
 
-@Service
 public class AuthServiceImpl implements AuthUseCase {
 
     private final UserRepositoryPort userRepository;

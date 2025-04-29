@@ -5,12 +5,15 @@ import com.codigo.auth.domain.model.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class JwtProvider {
 
-    private final String SECRET_KEY = "mysecretkey"; // Cambia esta clave por una más segura
+    @Value("${key.signature}")
+    private String SECRET_KEY;
+
     private final UserRepositoryPort userRepository; // Suponiendo que tienes un repositorio de usuarios
 
     public JwtProvider(UserRepositoryPort userRepository) {

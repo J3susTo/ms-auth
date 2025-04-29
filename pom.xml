@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.codigo</groupId>
-    <artifactId>ms-seguridad</artifactId>
+    <artifactId>ms-auth</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ms-auth</name>
     <description>Microservicio autenticacion</description>
@@ -126,19 +126,15 @@
             <scope>test</scope>
         </dependency>
 
-
-
         <!-- Spring Cloud Dependencies -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-vault-config</artifactId>
@@ -147,10 +143,11 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-client</artifactId>
+        </dependency>
     </dependencies>
-
-
     <repositories>
         <repository>
             <id>spring-snapshots</id>
@@ -201,6 +198,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>

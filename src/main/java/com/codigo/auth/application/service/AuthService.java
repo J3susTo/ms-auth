@@ -5,11 +5,13 @@ import com.codigo.auth.application.port.output.UserRepositoryPort;
 import com.codigo.auth.domain.model.Usuario;
 import com.codigo.auth.infrastructure.config.JwtProvider;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 
 @Service
+@Primary
 @RequiredArgsConstructor
 public class AuthService implements AuthUseCase {
 

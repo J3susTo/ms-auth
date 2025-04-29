@@ -26,4 +26,9 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
                 .map(UsuarioMapper::toDomain)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
     }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return usuarioRepositoryJpa.existsByEmail(email); // Asumiendo que existe un método en tu repositorio Jpa
+    }
 }
