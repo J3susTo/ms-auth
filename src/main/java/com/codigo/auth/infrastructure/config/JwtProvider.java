@@ -27,11 +27,15 @@ public class JwtProvider {
 
     // Método para validar el token y retornar el Usuario asociado
     public Usuario validateToken(String token) {
-        String username = getUsernameFromToken(token);
-        if (username != null) {
-            return userRepository.findByEmail(username); // Busca el usuario en la base de datos
+        try {
+            String username = getUsernameFromToken(token);
+            if (username != null) {
+                return userRepository.findByEmail(username);
+            }
+        } catch (Exception e) {
+            System.out.println("Token inválido o expirado: " + e.getMessage());
         }
-        return null; // Token inválido o no se encontró el usuario
+        return null;
     }
 
     // Método para obtener los Claims del token

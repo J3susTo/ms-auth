@@ -14,7 +14,6 @@ ms-auth
 │   │   │               │   │       └── UserRepositoryPort.java
 │   │   │               │   └── service
 │   │   │               │       └── AuthService.java
-│   │   │               │       └── AuthServiceImpl.java
 │   │   │               │       └── MyUserDetailsService.java
 │   │   │               ├── domain
 │   │   │               │   └── model
@@ -40,8 +39,7 @@ ms-auth
 │   │   │               └── MsAuthApplication.java
 │   │   └── resources
 │   │       ├── application.properties
-│   │       ├── application.yml
-│   │       └── other-config-files.yml
+│   │       └── bootstrap.properties
 │   src
 │   └── test
 │       └── java
@@ -50,17 +48,15 @@ ms-auth
 │                   └── auth
 │                       ├── application
 │                       │   └── service
-│                       │       ├── AuthServiceImplTest.java
-│                       │       ├── MyUserDetailsServiceTest.java
 │                       │       ├── UserServiceTest.java
-│                       ├── infrastructure
-│                       │   ├── controller
-│                       │   │   ├── AuthControllerTest.java
-│                       │   │   └── TestRolerControllerTest.java
-│                       │   ├── config
-│                       │   │   └── JwtProviderTest.java
-│                       │   ├── adapter
-│                       │   │   └── UserRepositoryAdapterTest.java
+│                       ├── domain
+│                       │   └── model
+│                       │       └── AuthServiceImplTest.java
+│                       └── infrastructure
+│                           ├── controller
+│                           │   └── AuthControllerTest.java
+│                           └── config
+│                               └── JwtProviderTest.java
 │   
 └── Dokerfile
 └── pom.xml

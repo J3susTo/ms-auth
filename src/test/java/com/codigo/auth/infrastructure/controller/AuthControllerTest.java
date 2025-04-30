@@ -2,6 +2,7 @@ package com.codigo.auth.infrastructure.controller;
 
 import com.codigo.auth.application.port.input.AuthUseCase;
 import com.codigo.auth.domain.model.Usuario;
+import com.codigo.auth.infrastructure.client.dto.UsuarioAuthDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 
@@ -38,12 +39,25 @@ class AuthControllerTest {
 
     @Test
     void testValidate() {
+        // Preparamos el mock de Usuario
         Usuario usuario = new Usuario(1L, "Ana", "ana@mail.com", "password", Usuario.Rol.ADMIN);
+
+        // Modificamos para que el método validateToken retorne un Usuario
         when(authUseCase.validateToken(anyString())).thenReturn(usuario);
 
-        ResponseEntity<Usuario> response = authController.validate("Bearer mocked-jwt-token");
+        // Llamamos al controlador con el token simulado
+        ResponseEntity<UsuarioAuthDTO> response = authController.validate("Bearer mocked-jwt-token");
 
+        // Verificamos que la respuesta sea un UsuarioAuthDTO, no un Usuario
         assertEquals(200, response.getStatusCodeValue());
-        assertEquals(usuario, response.getBody());
+
+        // Verificamos que el DTO se haya construido correctamente
+        UsuarioAuthDTO usuarioAuthDTO = response.getBody();
+        assertNotNull(usuarioAuthDTO);
+        assertEquals(usuario.getId(), usuarioAuthDTO.getId());
+        assertEquals(usuario.getNombre(), usuarioAuthDTO.getNombre());
+        assertEquals(usuario.getEmail(), usuarioAuthDTO.getEmail());
+        assertEquals(usuario.getRol().name(), usuarioAuthDTO.getRol());
+        assertTrue(usuarioAuthDTO.isValid());
     }
 }

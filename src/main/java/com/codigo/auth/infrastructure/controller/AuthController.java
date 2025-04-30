@@ -2,6 +2,7 @@ package com.codigo.auth.infrastructure.controller;
 
 import com.codigo.auth.application.port.input.AuthUseCase;
 import com.codigo.auth.domain.model.Usuario;
+import com.codigo.auth.infrastructure.client.dto.UsuarioAuthDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,10 +28,26 @@ public class AuthController {
         return ResponseEntity.ok(authUseCase.login(email, password));
     }
 
+
     @GetMapping("/validate")
-    public ResponseEntity<Usuario> validate(@RequestHeader("Authorization") String token) {
-        return ResponseEntity.ok(authUseCase.validateToken(token.replace("Bearer ", "")));
+    public ResponseEntity<UsuarioAuthDTO> validate(@RequestHeader("Authorization") String token) {
+        Usuario usuario = authUseCase.validateToken(token.replace("Bearer ", ""));
+
+        if (usuario != null) {
+            UsuarioAuthDTO dto = UsuarioAuthDTO.builder()
+                    .id(usuario.getId())
+                    .email(usuario.getEmail())
+                    .nombre(usuario.getNombre())
+                    .rol(usuario.getRol())
+                    .isValid(true)
+                    .build();
+            return ResponseEntity.ok(dto);
+        }
+
+        return ResponseEntity.ok(UsuarioAuthDTO.builder().isValid(false).build());
     }
+
+
     @GetMapping("/prueba")
     public ResponseEntity<String> getPrueba(){ return ResponseEntity.ok (valorPropiedad);
     }

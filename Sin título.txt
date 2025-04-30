@@ -1,0 +1,63 @@
+
+## 🧠 Patrón de Diseño
+
+Se ha implementado el patrón **Builder** en la clase `Usuario` mediante Lombok, para construir objetos de forma más clara y flexible.
+
+## 📌 Funcionalidades
+
+### 🔓 Endpoints públicos
+- `POST /auth/register` → Registro de usuario.
+- `POST /auth/login` → Autenticación y generación de JWT.
+- `GET /auth/validate` → Validación del JWT y retorno de datos del usuario.
+
+### 🔐 Endpoints protegidos (por rol)
+- `GET /test/superadmin` → Solo SUPERADMIN.
+- `GET /test/admin` → Solo ADMIN.
+- `GET /test/user` → Solo USUARIO.
+
+## 🔐 Roles soportados
+
+- `SUPERADMIN`
+- `ADMIN`
+- `USUARIO`
+
+## 🧪 Pruebas
+
+Incluye pruebas unitarias con cobertura usando:
+- **JUnit 5**
+- **Mockito**
+- **Jacoco**
+
+Integración con **SonarCloud** para mantener la calidad del código.
+
+## 🧰 Configuración externa
+
+- `application.properties` y `bootstrap.properties` para conexión con Spring Cloud Config.
+- Uso de **Vault** para proteger secretos como claves JWT o credenciales.
+
+## 🐳 Docker
+
+El proyecto incluye un `Dockerfile` para facilitar su empaquetado y despliegue en entornos containerizados.
+
+## 📚 Requisitos del sistema
+
+- Java 17
+- Maven 3.x
+- Docker (opcional para despliegue)
+- Eureka Server
+- Spring Cloud Config Server
+- HashiCorp Vault (conectado al Config Server)
+
+---
+
+## ✅ Estado del microservicio: COMPLETO
+Este microservicio cumple con todos los requisitos técnicos solicitados en el proyecto.
+
+---
+
+## 👨‍💻 Autor
+
+Desarrollado por: **[Tu Nombre]**
+
+GitHub: [github.com/tu-usuario](https://github.com/tu-usuario)
+

@@ -1,0 +1,23 @@
+# 🛡️ ms-auth - Microservicio de Autenticación y Autorización
+
+Este microservicio forma parte de un sistema distribuido basado en microservicios. Su objetivo es gestionar el registro, autenticación, autorización y validación de usuarios mediante JWT (JSON Web Tokens) con control de acceso por roles.
+
+## 🚀 Tecnologías utilizadas
+
+- **Java 17**
+- **Spring Boot 3.3.5**
+- **Maven**
+- **Spring Security + JWT**
+- **Spring Cloud Config** (para externalización de configuración)
+- **Eureka Client** (registro en el servidor de descubrimiento)
+- **HashiCorp Vault** (protección de secretos)
+- **JUnit 5 + Mockito** (pruebas unitarias)
+- **Jacoco** (cobertura de pruebas)
+- **SonarCloud** (análisis de calidad del código)
+- **Lombok** (reducción de boilerplate)
+- **Docker**
+
+## 📦 Arquitectura
+
+Se ha aplicado la **Arquitectura Hexagonal (Ports & Adapters)** para mantener bajo acoplamiento entre el dominio y las capas externas.
+
