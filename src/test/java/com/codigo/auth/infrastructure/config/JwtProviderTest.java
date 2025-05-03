@@ -58,7 +58,7 @@ class JwtProviderTest {
     void testValidateTokenWhenUserNotFound() {
         when(userRepositoryPort.findByEmail("nonexistent@mail.com")).thenReturn(null);
 
-        // Se genera manualmente un token de un usuario inexistente
+        // Generando manualmente un token de un usuario inexistente
         Usuario dummy = Usuario.builder()
                 .email("nonexistent@mail.com")
                 .build();
