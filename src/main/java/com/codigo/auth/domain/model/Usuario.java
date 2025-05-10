@@ -6,16 +6,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder // Usamos el patrón Builder aquí
+@Builder 
 @NoArgsConstructor
 @AllArgsConstructor
 public class Usuario {
 
-    private Long id;               // ID del usuario (clave primaria)
-    private String nombre;         // Nombre del usuario
-    private String email;          // Correo electrónico
-    private String password;       // Contraseña
-    private Rol rol;               // Rol del usuario
+    private Long id;
+    private String nombre;
+    private String email;
+    private String password;
+    private Rol rol;
 
     // Enum para definir los roles de usuario
     public enum Rol {

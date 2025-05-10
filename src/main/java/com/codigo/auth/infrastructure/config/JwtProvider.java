@@ -49,7 +49,7 @@ public class JwtProvider {
     // Método para generar un token JWT
     public String generateToken(Usuario usuario) {
         return Jwts.builder()
-                .setSubject(usuario.getEmail()) // Suponiendo que usas el email como el subject
+                .setSubject(usuario.getEmail())
                 .setIssuedAt(new java.util.Date())
                 .setExpiration(new java.util.Date(System.currentTimeMillis() + 1000 * 60 * 60)) // Expiración de 1 hora
                 .signWith(SignatureAlgorithm.HS512, SECRET_KEY)

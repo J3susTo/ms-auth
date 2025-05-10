@@ -15,7 +15,7 @@ public class UsuarioMapper {
                 .nombre(usuario.getNombre())
                 .email(usuario.getEmail())
                 .password(usuario.getPassword())
-                .rol(usuario.getRol()) // Ya no necesitas mapear el Rol, se usa directamente
+                .rol(usuario.getRol())
                 .build();
     }
 
@@ -30,7 +30,7 @@ public class UsuarioMapper {
                 .nombre(entity.getNombre())
                 .email(entity.getEmail())
                 .password(entity.getPassword())
-                .rol(entity.getRol()) // Ya no necesitas mapear el Rol, se usa directamente
+                .rol(entity.getRol())
                 .build();
     }
 }

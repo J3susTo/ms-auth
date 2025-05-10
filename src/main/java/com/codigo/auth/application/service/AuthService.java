@@ -17,11 +17,11 @@ public class AuthService implements AuthUseCase {
 
     private final UserRepositoryPort userRepository;
     private final JwtProvider jwtProvider;
-    private final PasswordEncoder passwordEncoder; // 👈 Agregado para encriptar/verificar contraseñas
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public Usuario register(Usuario usuario) {
-        // Antes de guardar el usuario, encriptar su contraseña
+        // Antes de guardar el usuario, encriptamos su contraseña
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         return userRepository.save(usuario);
     }
